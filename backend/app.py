@@ -10,7 +10,7 @@ app = Flask(__name__)
 CORS(app)
 
 # Load the ML Model synchronously on startup
-CSV_PATH = "../water_leak_detection_1000_rows.csv"
+CSV_PATH = "water_leak_detection_1000_rows.csv"
 detector = LeakDetector(CSV_PATH)
 
 # Zones Config
@@ -149,6 +149,8 @@ def trigger_email():
     except Exception as e:
         print(f"[MAIL ERROR] Failed to send email: {str(e)}")
         return jsonify({"status": "error", "message": str(e)}), 500
+import os
 
 if __name__ == '__main__':
-    app.run(port=5000, debug=False, use_reloader=False)
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port, debug=False)
