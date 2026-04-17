@@ -27,7 +27,7 @@ export default function StatsStrip({ totalZones, anomalies, confidence }) {
                </div>
 
                <div className="flex flex-col gap-0.5 text-left">
-                  <span className="text-[9px] font-black tracking-widest text-white/40 uppercase">{s.label}</span>
+                  <span className="text-[9px] font-black tracking-widest text-white/40">{s.label}</span>
                   <span className="text-[8px] font-bold text-white/30 tracking-wide">{s.sub}</span>
                </div>
            </div>

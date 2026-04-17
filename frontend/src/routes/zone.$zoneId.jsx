@@ -91,11 +91,11 @@ function ZoneDetailComponent() {
             <div className="flex items-center gap-8">
                <div className="flex items-center gap-3">
                   <div className="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_var(--color-primary)]" />
-                  <span className="text-[10px] font-black text-white/50 tracking-widest uppercase">Pressure</span>
+                  <span className="text-[10px] font-black text-white/50 tracking-widest">Pressure</span>
                </div>
                <div className="flex items-center gap-3">
                   <div className="w-2 h-2 rounded-full bg-accent shadow-[0_0_8px_var(--color-accent)]" />
-                  <span className="text-[10px] font-black text-white/50 tracking-widest uppercase">Flow</span>
+                  <span className="text-[10px] font-black text-white/50 tracking-widest">Flow</span>
                </div>
             </div>
           </div>
@@ -149,7 +149,7 @@ function ZoneDetailComponent() {
                     <card.Icon size={18} style={{ color: card.color }} />
                  </div>
                  <div className="flex flex-col gap-0.5 text-left">
-                     <span className="text-[9px] font-black tracking-[0.2em] text-white/40 uppercase">{card.label}</span>
+                     <span className="text-[9px] font-black tracking-[0.2em] text-white/40">{card.label}</span>
                      <span className="text-[8px] font-bold text-white/30 tracking-widest uppercase">{card.desc}</span>
                  </div>
              </div>

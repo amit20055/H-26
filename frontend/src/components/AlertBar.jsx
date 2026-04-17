@@ -87,7 +87,7 @@ export default function AlertBar({ data, voiceEnabled }) {
              <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2 text-primary">
                    <AlertCircle size={18} className="animate-bounce" />
-                   <span className="text-[10px] font-black tracking-[0.3em] uppercase italic">Critical Signal</span>
+                   <span className="text-[10px] font-black tracking-[0.3em] uppercase italic">Critical signal</span>
                 </div>
                 <button 
                   onClick={() => setVisible(false)}
@@ -101,10 +101,10 @@ export default function AlertBar({ data, voiceEnabled }) {
                 <h4 className="text-lg font-black hero-text text-white leading-tight">
                    Anomaly in {alertContent?.zone}
                 </h4>
-                <p className="text-[11px] font-bold text-white/60 uppercase tracking-tighter">
+                <p className="text-[11px] font-bold text-white/60 tracking-tight">
                    Live Location: {alertContent?.zone ? ZONE_COORDS[alertContent.zone] : ''}
                 </p>
-                <p className="text-[11px] font-bold text-white/40 uppercase tracking-tighter mt-1">
+                <p className="text-[11px] font-bold text-white/40 tracking-tight mt-1">
                    System integrity compromised · Pulse {alertContent?.pressure?.toFixed(2)} Bar
                 </p>
              </div>
@@ -117,7 +117,7 @@ export default function AlertBar({ data, voiceEnabled }) {
                }}
                className="mt-2 flex items-center justify-between px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-all group/btn"
              >
-                <span className="text-[10px] font-black tracking-widest uppercase">Inspect Node</span>
+                <span className="text-[10px] font-black tracking-widest uppercase">Inspect node</span>
                 <ChevronRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
              </button>
           </div>

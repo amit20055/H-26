@@ -3,6 +3,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { DataContext } from '../DataContext';
 import Header from '../components/Header';
 import AlertBar from '../components/AlertBar';
+import AIChatBot from '../components/AIChatBot';
 
 const ZONE_NAMES = {
   'Zone A': 'NORTH GRID',
@@ -35,7 +36,7 @@ function RootComponent() {
 
   useEffect(() => {
     fetchData();
-    const interval = setInterval(fetchData, 1500);
+    const interval = setInterval(fetchData, 5000);
     return () => clearInterval(interval);
   }, [fetchData]);
 
@@ -57,6 +58,8 @@ function RootComponent() {
           )}
           <AlertBar data={data} voiceEnabled={voiceEnabled} />
         </div>
+        {/* Global floating chatbot — outside scroll container */}
+        <AIChatBot />
       </div>
     </DataContext.Provider>
   );

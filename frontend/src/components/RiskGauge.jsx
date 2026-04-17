@@ -13,9 +13,9 @@ function calculateRisk(history, latest) {
 
   const baseRisk = anomalyRate * 40 + Math.min(variance * 20, 30) + (latest.is_anomaly ? 30 : 0);
   
-  const h2 = Math.min(Math.round(baseRisk + Math.random() * 5), 99);
-  const h4 = Math.min(Math.round(baseRisk * 1.15 + Math.random() * 8), 99);
-  const h24 = Math.min(Math.round(baseRisk * 1.4 + Math.random() * 12), 99);
+  const h2 = Math.min(Math.round(baseRisk), 99);
+  const h4 = Math.min(Math.round(baseRisk * 1.15), 99);
+  const h24 = Math.min(Math.round(baseRisk * 1.4), 99);
 
   const trend = h24 > h2 + 10 ? 'increasing' : h2 > h24 + 10 ? 'decreasing' : 'stable';
 

@@ -52,7 +52,7 @@ def simulation_loop():
             is_anomaly = detector.predict(p, f)
             
             # Calculate a mock confidence score
-            confidence = round(random.uniform(30, 45), 1) if is_anomaly else round(random.uniform(95, 99), 1)
+            confidence = 38.5 if is_anomaly else 97.4
             
             data_point = {
                 "id": event_id,
@@ -69,7 +69,7 @@ def simulation_loop():
             latest_data[zone] = data_point
             event_id += 1
             
-        time.sleep(1)
+        time.sleep(5)
 
 # Start background thread
 thread = threading.Thread(target=simulation_loop, daemon=True)

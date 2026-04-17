@@ -82,7 +82,7 @@ export default function ZoneCard({ zoneId, regionName, data, history }) {
         <div className="flex items-center justify-between pt-4 border-t border-white/5">
            <div className="flex items-center gap-2">
               <div className="w-1.5 h-1.5 rounded-full bg-white/20" />
-              <span className="text-[9px] font-black text-white/40 tracking-widest uppercase italic">AI conf.</span>
+              <span className="text-[9px] font-black text-white/40 tracking-widest italic">AI conf.</span>
            </div>
            <span className="text-[12px] font-black text-primary">{animatedConfidence}%</span>
         </div>
