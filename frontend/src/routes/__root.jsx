@@ -21,8 +21,8 @@ function RootComponent() {
   const fetchData = useCallback(async () => {
     try {
       const [dataRes, histRes] = await Promise.all([
-        fetch('http://localhost:5000/api/data'),
-        fetch('http://localhost:5000/api/history'),
+        fetch(`${API_URL}/api/data`),
+        fetch(`${API_URL}/api/history`),
       ]);
       if (!dataRes.ok || !histRes.ok) throw new Error('Backend unreachable');
       const recent = await dataRes.json();
