@@ -23,7 +23,7 @@ export default function ZoneCard({ zoneId, regionName, data, history }) {
       className="glass-aurora ticket-cutout rounded-3xl cursor-pointer flex items-stretch group overflow-hidden transition-all duration-500 hover:scale-[1.02]"
     >
       {/* Left Section: Details */}
-      <div className="flex-1 p-6 flex flex-col gap-6 ticket-divider relative">
+      <div className="flex-1 p-5 flex flex-col gap-5 ticket-divider relative">
         <div className="flex flex-col gap-1">
           <span className="text-[10px] font-black tracking-widest text-white/40 uppercase">{regionName}</span>
           <h3 className="text-2xl font-black hero-text text-white">Zone {idLetter}</h3>
@@ -47,20 +47,20 @@ export default function ZoneCard({ zoneId, regionName, data, history }) {
            </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-3">
           <div className="flex flex-col gap-1">
              <div className="flex items-center gap-1.5 text-white/40">
                 <Activity size={12} className="text-primary" />
                 <span className="text-[9px] font-black tracking-widest uppercase">Pressure</span>
              </div>
-             <p className="text-lg font-black text-white">{data.pressure?.toFixed(2)} <span className="text-[10px] font-medium opacity-40 italic">bar</span></p>
+             <p className="text-[17px] font-black text-white leading-tight">{data.pressure?.toFixed(2)} <span className="text-[10px] font-medium opacity-40 italic">bar</span></p>
           </div>
           <div className="flex flex-col gap-1">
              <div className="flex items-center gap-1.5 text-white/40">
                 <Droplets size={12} className="text-accent" />
                 <span className="text-[9px] font-black tracking-widest uppercase">Flow</span>
              </div>
-             <p className="text-lg font-black text-white">{data.flow_rate?.toFixed(1)} <span className="text-[10px] font-medium opacity-40 italic">L/s</span></p>
+             <p className="text-[17px] font-black text-white leading-tight">{data.flow_rate?.toFixed(1)} <span className="text-[10px] font-medium opacity-40 italic">L/s</span></p>
           </div>
         </div>
 
@@ -82,18 +82,18 @@ export default function ZoneCard({ zoneId, regionName, data, history }) {
         <div className="flex items-center justify-between pt-4 border-t border-white/5">
            <div className="flex items-center gap-2">
               <div className="w-1.5 h-1.5 rounded-full bg-white/20" />
-              <span className="text-[9px] font-black text-white/40 tracking-widest uppercase italic">AI Confidence</span>
+              <span className="text-[9px] font-black text-white/40 tracking-widest uppercase italic">AI conf.</span>
            </div>
-           <span className="text-xs font-black text-primary">{animatedConfidence}% <span className="text-[10px] opacity-40 font-bold ml-1">↗</span></span>
+           <span className="text-[12px] font-black text-primary">{animatedConfidence}%</span>
         </div>
       </div>
 
       {/* Right Section: Alphanumeric Ticket Stub */}
-      <div className={`w-24 flex items-center justify-center transition-colors duration-500 overflow-hidden relative ${
+      <div className={`w-16 flex items-center justify-center transition-colors duration-500 overflow-hidden relative ${
         isAnomaly ? 'bg-primary/20' : 'bg-accent/20'
       }`}>
          {/* Stub text */}
-         <span className="text-7xl font-black hero-text text-white opacity-40 group-hover:opacity-100 transition-opacity transform -rotate-12 group-hover:rotate-0 duration-500">
+         <span className="text-6xl font-black hero-text text-white opacity-40 group-hover:opacity-100 transition-opacity transform -rotate-12 group-hover:rotate-0 duration-500">
             {idLetter}
          </span>
          

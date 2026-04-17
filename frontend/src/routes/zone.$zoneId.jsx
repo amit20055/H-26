@@ -9,11 +9,11 @@ import RiskGauge from '../components/RiskGauge';
 import useCountUp from '../hooks/useCountUp';
 
 const ZONE_NAMES = {
-  'Zone A': 'NORTH GRID',
-  'Zone B': 'EAST RESERVOIR',
-  'Zone C': 'SOUTH LOOP',
-  'Zone D': 'WEST PLANT',
-  'Zone E': 'CENTRAL TRUNK',
+  'Zone A': 'North Grid',
+  'Zone B': 'East Reservoir',
+  'Zone C': 'South Loop',
+  'Zone D': 'West Plant',
+  'Zone E': 'Central Trunk',
 };
 const ALL_ZONES = ['Zone A', 'Zone B', 'Zone C', 'Zone D', 'Zone E'];
 
@@ -39,8 +39,8 @@ function ZoneDetailComponent() {
   return (
     <div className="flex flex-col gap-10 animate-entrance relative z-10">
       {/* Detail Header: Ticket Style */}
-      <header className="glass-aurora ticket-cutout p-8 rounded-[40px] flex items-center justify-between flex-wrap gap-8">
-        <div className="flex items-center gap-6">
+      <header className="glass-aurora ticket-cutout p-4 rounded-3xl flex items-center justify-between flex-wrap gap-4 border border-white/5">
+        <div className="flex items-center gap-4">
           <button 
             onClick={() => navigate({ to: '/' })} 
             className="w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-300 bg-white/5 border border-white/10 hover:bg-primary hover:text-white group"
@@ -48,16 +48,16 @@ function ZoneDetailComponent() {
             <ArrowLeft size={24} className="text-white/40 group-hover:text-white" />
           </button>
           <div className="flex flex-col">
-            <span className="text-[11px] font-black tracking-[0.4em] text-primary uppercase mb-1 italic">
+            <span className="text-[9px] font-black tracking-[0.4em] text-primary uppercase mb-0.5 italic">
                Node Diagnostics
             </span>
-            <h1 className="text-4xl font-black hero-text text-white flex items-baseline gap-4">
-              Zone {zoneId} <span className="text-xl font-bold text-white/30 tracking-widest uppercase">{regionName}</span>
+            <h1 className="text-3xl font-black hero-text text-white flex items-baseline gap-3">
+              Zone {zoneId} <span className="text-lg font-bold text-white/30 tracking-widest uppercase">{regionName}</span>
             </h1>
           </div>
         </div>
 
-        <div className="flex items-center gap-3 bg-white/5 p-2 rounded-3xl border border-white/5">
+        <div className="flex items-center gap-2 bg-white/5 p-1.5 rounded-2xl border border-white/5">
           {ALL_ZONES.map(z => {
             const id = z.split(' ')[1];
             const isCurrent = id === zoneId;
@@ -66,7 +66,7 @@ function ZoneDetailComponent() {
               <button
                 key={z}
                 onClick={() => navigate({ to: '/zone/$zoneId', params: { zoneId: id } })}
-                className={`w-12 h-12 rounded-2xl text-[11px] font-black flex items-center justify-center transition-all duration-300 ${
+                className={`w-10 h-10 rounded-xl text-[10px] font-black flex items-center justify-center transition-all duration-300 ${
                   isCurrent 
                     ? (zAlert ? 'bg-primary text-white' : 'bg-accent text-white') 
                     : 'bg-white/2 text-white/40 hover:bg-white/10 hover:text-white'
@@ -79,39 +79,13 @@ function ZoneDetailComponent() {
         </div>
       </header>
 
-      {/* KPI Section: Arches */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        {[
-          { label: 'LINE PRESSURE', value: latest.pressure?.toFixed(2) || '—', unit: 'BAR', color: 'var(--color-primary)', Icon: Activity, desc: 'Real-time PSI' },
-          { label: 'FLOW VELOCITY', value: latest.flow_rate?.toFixed(1) || '—', unit: 'L/S', color: 'var(--color-accent)', Icon: Droplets, desc: 'Throughput' },
-          { label: 'CLASSIFICATION', value: isAnomaly ? 'ANOMALY' : 'NOMINAL', unit: '', color: isAnomaly ? 'var(--color-primary)' : 'var(--color-success)', Icon: ShieldCheck, desc: 'Edge Inference' },
-          { label: 'PRECISION', value: animatedConfidence, unit: '%', color: 'var(--color-info)', Icon: Brain, desc: 'Confidence' },
-        ].map(card => (
-          <div key={card.label} className="glass-aurora tombstone p-8 flex flex-col items-center group transition-all duration-500 hover:bg-white/5">
-             <div className="w-16 h-16 rounded-full flex items-center justify-center mb-6 shadow-xl" style={{ backgroundColor: `${card.color}15`, border: `1px solid ${card.color}30` }}>
-                <card.Icon size={24} style={{ color: card.color }} />
-             </div>
-             <span className="text-[10px] font-black tracking-[0.3em] text-white/40 uppercase mb-2">{card.label}</span>
-             <div className="flex items-baseline gap-1.5 mb-4">
-               <span className="text-4xl font-black hero-text text-white" style={{ fontVariantNumeric: 'tabular-nums' }}>
-                 {card.value}
-               </span>
-               <span className="text-xs font-bold text-white/30">{card.unit}</span>
-             </div>
-             <div className="px-3 py-1 rounded-full bg-white/5 border border-white/5">
-                <span className="text-[9px] font-bold text-white/30 tracking-widest uppercase">{card.desc}</span>
-             </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Primary Analytics Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+      {/* Primary Analytics Grid (Moved Graph to be shown first) */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Main Telemetry Chart */}
-        <div className="lg:col-span-8 glass-aurora p-8 rounded-[40px] flex flex-col gap-8">
+        <div className="lg:col-span-8 glass-aurora p-5 rounded-3xl flex flex-col gap-4 border border-white/5">
           <div className="flex items-center justify-between">
             <div className="flex flex-col gap-1">
-              <h3 className="text-2xl font-black hero-text text-white uppercase italic">Telemetry Stream</h3>
+              <h3 className="text-xl font-black hero-text text-white uppercase italic">Telemetry Stream</h3>
               <p className="text-[10px] font-black text-white/30 tracking-[0.4em] uppercase">60-Sample high-fidelity tracking</p>
             </div>
             <div className="flex items-center gap-8">
@@ -126,7 +100,8 @@ function ZoneDetailComponent() {
             </div>
           </div>
           
-          <div className="h-[380px] w-full">
+          {/* Reduced graph box height */}
+          <div className="h-[160px] w-full mt-2">
             <ResponsiveContainer>
               <AreaChart data={chartData} margin={{ top: 0, right: 0, left: -20, bottom: 0 }}>
                 <defs>
@@ -141,8 +116,8 @@ function ZoneDetailComponent() {
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="hsla(20, 10%, 100%, 0.05)" />
                 <XAxis dataKey="time" hide />
-                <YAxis yAxisId="left" tick={{ fill: 'hsla(20, 10%, 100%, 0.3)', fontSize: 11, fontWeight: 800 }} axisLine={false} tickLine={false} />
-                <YAxis yAxisId="right" orientation="right" tick={{ fill: 'hsla(20, 10%, 100%, 0.3)', fontSize: 11, fontWeight: 800 }} axisLine={false} tickLine={false} />
+                <YAxis yAxisId="left" domain={['auto', 'auto']} tick={{ fill: 'hsla(20, 10%, 100%, 0.3)', fontSize: 11, fontWeight: 800 }} axisLine={false} tickLine={false} />
+                <YAxis yAxisId="right" orientation="right" domain={['auto', 'auto']} tick={{ fill: 'hsla(20, 10%, 100%, 0.3)', fontSize: 11, fontWeight: 800 }} axisLine={false} tickLine={false} />
                 <Tooltip 
                   contentStyle={{ backgroundColor: 'hsla(20, 14%, 7%, 0.95)', border: '1px solid hsla(20, 10%, 100%, 0.1)', borderRadius: '16px', backdropFilter: 'blur(10px)' }} 
                   itemStyle={{ fontWeight: 900, fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.1em' }}
@@ -154,26 +129,53 @@ function ZoneDetailComponent() {
           </div>
         </div>
 
-        {/* Diagnostic Stack */}
-        <div className="lg:col-span-4 flex flex-col gap-8">
+        {/* Diagnostic Stack - Risk Gauge */}
+        <div className="lg:col-span-4 h-full">
            <RiskGauge latest={latest} history={history} />
-           <div className="glass-aurora p-8 rounded-[40px] flex flex-col gap-6">
-              <div className="flex items-center gap-4">
-                 <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-white">
-                    <Brain size={24} />
-                 </div>
-                 <h3 className="text-xl font-black hero-text text-white uppercase italic tracking-tight">AI Logic</h3>
-              </div>
-              <AIBreakdown latest={latest} isAnomaly={isAnomaly} />
-           </div>
         </div>
       </div>
 
-      {/* Secondary Analysis Row */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-         <WaterLossCalc latest={latest} isAnomaly={isAnomaly} />
-         <RootCauseCard latest={latest} history={history} />
+      {/* KPI Section: Small Rectangles array under the graph */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {[
+          { label: 'Line pressure', value: latest.pressure?.toFixed(2) || '—', unit: 'bar', color: 'var(--color-primary)', Icon: Activity, desc: 'Real-time PSI' },
+          { label: 'Flow velocity', value: latest.flow_rate?.toFixed(1) || '—', unit: 'L/s', color: 'var(--color-accent)', Icon: Droplets, desc: 'Throughput' },
+          { label: 'Classification', value: isAnomaly ? 'Anomaly' : 'Nominal', unit: '', color: isAnomaly ? 'var(--color-primary)' : 'var(--color-success)', Icon: ShieldCheck, desc: 'Edge inference' },
+          { label: 'Precision', value: animatedConfidence, unit: '%', color: 'var(--color-info)', Icon: Brain, desc: 'Confidence' },
+        ].map(card => (
+          <div key={card.label} className="glass-aurora rounded-2xl p-4 flex items-center justify-between relative group transition-all duration-500 hover:bg-white/5 h-20 border border-white/5">
+             <div className="flex items-center gap-4">
+                 <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: `${card.color}15`, border: `1px solid ${card.color}30` }}>
+                    <card.Icon size={18} style={{ color: card.color }} />
+                 </div>
+                 <div className="flex flex-col gap-0.5 text-left">
+                     <span className="text-[9px] font-black tracking-[0.2em] text-white/40 uppercase">{card.label}</span>
+                     <span className="text-[8px] font-bold text-white/30 tracking-widest uppercase">{card.desc}</span>
+                 </div>
+             </div>
+             
+             <div className="flex items-baseline gap-1.5 text-right">
+               <span className="text-3xl font-black hero-text text-white" style={{ fontVariantNumeric: 'tabular-nums' }}>
+                 {card.value}
+               </span>
+               <span className="text-xs font-bold text-white/30">{card.unit}</span>
+             </div>
+          </div>
+        ))}
       </div>
+
+      {/* AI Logic (Full Width Horizontal Rectangle) */}
+      <div className="glass-aurora p-6 rounded-3xl flex flex-col gap-6 border border-white/5">
+         <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-white">
+               <Brain size={24} />
+            </div>
+            <h3 className="text-xl font-black hero-text text-white uppercase italic tracking-tight">AI Logic</h3>
+         </div>
+         <AIBreakdown latest={latest} isAnomaly={isAnomaly} />
+      </div>
+
+
 
       {/* Synchrony Tracker */}
       <div className="glass-aurora p-10 rounded-[40px] flex flex-col gap-8">
@@ -184,7 +186,7 @@ function ZoneDetailComponent() {
           </div>
           <div className="flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/5">
              <span className="w-1.5 h-1.5 rounded-full bg-success animate-pulse shadow-[0_0_8px_var(--color-success)]" />
-             <span className="text-[10px] font-black text-success tracking-widest uppercase">Grid Balanced</span>
+             <span className="text-[10px] font-black text-success tracking-widest uppercase">Grid balanced</span>
           </div>
         </div>
         
@@ -200,7 +202,7 @@ function ZoneDetailComponent() {
               return (
                 <div key={z} className={`flex flex-col gap-4 p-5 rounded-3xl bg-white/2 border border-white/5 transition-all duration-500 hover:bg-white/10 ${zIsAlert ? 'border-primary/40 bg-primary/5' : ''}`}>
                    <div className="flex items-center justify-between">
-                      <span className="text-[10px] font-black tracking-widest text-white/40 uppercase">{z.split(' ')[1]} NODE</span>
+                      <span className="text-[10px] font-black tracking-widest text-white/40 uppercase">{z.split(' ')[1]} node</span>
                       <span className={`text-[11px] font-black ${zIsAlert ? 'text-primary' : 'text-success'}`} style={{ fontVariantNumeric: 'tabular-nums' }}>
                         {zData?.pressure?.toFixed(2)}
                       </span>
@@ -222,7 +224,7 @@ function ZoneDetailComponent() {
       {/* Footer Audit Row */}
       <footer className="py-12 border-t border-white/5 text-center px-4">
         <p className="text-[11px] font-black tracking-[0.5em] text-white/20 uppercase">
-          Autonomous Infrastructure Diagnostics // Layer 4 Security Hardened
+          Autonomous infrastructure diagnostics � Layer 4 security hardened
         </p>
       </footer>
     </div>

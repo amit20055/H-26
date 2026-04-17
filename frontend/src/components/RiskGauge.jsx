@@ -37,7 +37,7 @@ export default function RiskGauge({ history, latest }) {
   const animatedScore = useCountUp(risk.h2, 2000, 0);
 
   return (
-    <div className="glass-aurora p-8 rounded-[40px] flex flex-col gap-8 relative overflow-hidden transition-all duration-500">
+    <div className="glass-aurora p-6 rounded-[32px] flex flex-col justify-between h-full relative overflow-hidden transition-all duration-500 border border-white/5">
       <div className="flex items-center justify-between relative z-10">
         <div className="flex flex-col gap-1">
           <span className="text-[10px] font-black tracking-[0.4em] text-white/40 uppercase mb-1">Predictive Model</span>

@@ -14,7 +14,7 @@ export default function NetworkTopology({ data }) {
   if (!data?.recent) return null;
 
   return (
-    <div className="glass-aurora p-10 rounded-[40px] flex flex-col lg:flex-row items-center gap-12 bg-navy relative overflow-hidden group">
+    <div className="glass-aurora p-10 rounded-[40px] h-[400px] flex flex-col lg:flex-row items-center gap-12 bg-navy relative overflow-hidden group border border-white/10">
       {/* Topology Header (Top corner) */}
       <div className="absolute top-8 left-10 flex items-center gap-3">
          <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-info">

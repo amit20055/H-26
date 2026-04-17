@@ -4,6 +4,7 @@ import StatsStrip from '../components/StatsStrip';
 import MLExplainer from '../components/MLExplainer';
 import ZoneCard from '../components/ZoneCard';
 import NetworkTopology from '../components/NetworkTopology';
+import MapComponent from '../components/MapComponent';
 import { ShieldCheck, Zap, Activity, Info } from 'lucide-react';
 
 function IndexComponent() {
@@ -15,19 +16,19 @@ function IndexComponent() {
     : '—';
 
   return (
-    <div className="flex flex-col gap-12 animate-entrance relative z-10">
+    <div className="flex flex-col gap-6 animate-entrance relative z-10">
       {/* Hero Header: AI Precision + Arches */}
       <StatsStrip totalZones={zones.length || 5} anomalies={anomalyCount} confidence={avgConfidence} />
 
-      {/* Real-Time Telemetry Section */}
-      <section className="flex flex-col gap-8">
+      {/* Real-time telemetry Section */}
+      <section className="flex flex-col gap-4">
         <div className="flex items-end justify-between px-4">
           <div className="flex flex-col gap-1">
-             <span className="text-[10px] font-black tracking-[0.4em] text-white/30 uppercase italic">Real-Time Telemetry</span>
-             <h2 className="text-4xl font-black hero-text text-white">Active Nodes</h2>
+             <span className="text-[10px] font-black tracking-[0.4em] text-white/30 uppercase italic">Real-time telemetry</span>
+             <h2 className="text-4xl font-black hero-text text-white">Active nodes</h2>
           </div>
           <button className="text-[11px] font-black tracking-widest text-primary uppercase border-b-2 border-primary/20 hover:border-primary transition-all pb-1">
-            VIEW ALL
+            View all
           </button>
         </div>
 
@@ -45,7 +46,7 @@ function IndexComponent() {
         </div>
 
         {/* Row 2: Zones D, E centered */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[66%] mx-auto w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[66%] mx-auto w-full mt-2">
           {zones.slice(3, 5).map(zone => (
             <ZoneCard
               key={zone}
@@ -58,18 +59,21 @@ function IndexComponent() {
         </div>
       </section>
 
-      {/* Infrastructure Topology (Wide) */}
-      <section className="flex flex-col gap-8">
+      {/* Infrastructure Topology & Map */}
+      <section className="flex flex-col gap-4">
         <div className="flex items-center gap-4 px-4 text-white/30">
            <Activity size={18} />
            <span className="text-[10px] font-black tracking-[0.4em] uppercase">Live Infrastructure</span>
            <div className="h-px flex-1 bg-white/5" />
         </div>
-        <NetworkTopology data={data} />
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
+           <NetworkTopology data={data} />
+           <MapComponent data={data} ZONE_NAMES={ZONE_NAMES} />
+        </div>
       </section>
 
       {/* Intelligence Bento Hub */}
-      <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+      <section className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-8">
          {/* Security Card */}
          <div className="lg:col-span-5 glass-aurora p-8 rounded-[40px] flex flex-col gap-6 group">
             <div className="flex items-center gap-4">
@@ -77,8 +81,8 @@ function IndexComponent() {
                   <ShieldCheck size={24} />
                </div>
                <div className="flex flex-col">
-                  <span className="text-[10px] font-black tracking-widest text-white/40 uppercase">Security Protocol</span>
-                  <h3 className="text-xl font-extrabold text-white">Isolation Forest Active</h3>
+                  <span className="text-[10px] font-black tracking-widest text-white/40 uppercase">Security protocol</span>
+                  <h3 className="text-xl font-extrabold text-white">Isolation Forest active</h3>
                </div>
             </div>
             <p className="text-sm font-medium text-white/50 leading-relaxed">
@@ -108,9 +112,9 @@ function IndexComponent() {
             
             <div className="flex flex-col gap-6">
                {[
-                  { label: 'Throughput', val: '1.2 GB/S', icon: Zap, color: 'text-accent' },
-                  { label: 'Avg Pressure', val: '2.93 BAR', icon: Activity, color: 'text-primary' },
-                  { label: 'Total Flow', val: '507 L/S', icon: Info, color: 'text-success' },
+                  { label: 'Throughput', val: '1.2 GB/s', icon: Zap, color: 'text-accent' },
+                  { label: 'Avg pressure', val: '2.93 bar', icon: Activity, color: 'text-primary' },
+                  { label: 'Total flow', val: '507 L/s', icon: Info, color: 'text-success' },
                ].map((item, i) => (
                   <div key={i} className="flex-1 glass-aurora p-6 rounded-3xl flex flex-col justify-between group">
                      <div className="flex items-center justify-between">
