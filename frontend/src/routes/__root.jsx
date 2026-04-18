@@ -5,6 +5,8 @@ import Header from '../components/Header';
 import AlertBar from '../components/AlertBar';
 import AIChatBot from '../components/AIChatBot';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 const ZONE_NAMES = {
   'Zone A': 'NORTH GRID',
   'Zone B': 'EAST RESERVOIR',

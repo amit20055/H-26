@@ -223,7 +223,7 @@ function ZoneDetailComponent() {
       {/* Footer Audit Row */}
       <footer className="py-12 border-t border-white/5 text-center px-4">
         <p className="text-[11px] font-black tracking-[0.5em] text-white/20 uppercase">
-          Autonomous infrastructure diagnostics � Layer 4 security hardened
+          Autonomous Infrastructure Diagnostics // Layer 4 Security Hardened
         </p>
       </footer>
     </div>
