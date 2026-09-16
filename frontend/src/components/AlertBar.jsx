@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { AlertCircle, X, ChevronRight, Mail } from 'lucide-react';
 import { useNavigate } from '@tanstack/react-router';
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5005';
 const ZONE_EMAILS = {
   'Zone A': 'rishabh79singh@gmail.com',
   'Zone B': 'dubeyamitesh024@gmail.com',

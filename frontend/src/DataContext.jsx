@@ -5,8 +5,11 @@ export const DataContext = createContext({
   voiceEnabled: false,
   setVoiceEnabled: () => {},
   ZONE_NAMES: {},
+  isBackendConnected: false,
+  retryConnection: () => {},
 });
 
 export function useAppData() {
   return useContext(DataContext);
 }
+

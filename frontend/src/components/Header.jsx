@@ -4,12 +4,12 @@ import { useAppData } from '../DataContext';
 
 export default function Header({ voiceEnabled, setVoiceEnabled }) {
   const navigate = useNavigate();
-  const { data } = useAppData();
+  const { data, isBackendConnected, retryConnection } = useAppData();
   
   // Create ticker items from live data
   const tickerItems = Object.entries(data.recent || {}).map(([zone, readings]) => ({
     label: zone,
-    value: readings.pressure.toFixed(2) + ' BAR',
+    value: readings.pressure ? readings.pressure.toFixed(2) + ' BAR' : '--',
     isAnomaly: readings.is_anomaly
   }));
 
@@ -41,10 +41,22 @@ export default function Header({ voiceEnabled, setVoiceEnabled }) {
             COMPARE
           </button>
           
-          <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-success/30 bg-success/10">
-            <span className="w-2 h-2 rounded-full bg-success animate-pulse shadow-[0_0_10px_var(--color-success)]" />
-            <span className="text-[11px] font-black tracking-widest text-success">LIVE</span>
-          </div>
+          <button
+            onClick={retryConnection}
+            title={isBackendConnected ? "Connected to Python Flask Backend" : "Running in client-side simulator mode. Click to retry backend connection."}
+            className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all cursor-pointer ${
+              isBackendConnected 
+                ? 'border-success/30 bg-success/10 text-success' 
+                : 'border-amber-500/40 bg-amber-500/10 text-amber-400 hover:bg-amber-500/20'
+            }`}
+          >
+            <span className={`w-2 h-2 rounded-full ${
+              isBackendConnected ? 'bg-success animate-pulse shadow-[0_0_10px_var(--color-success)]' : 'bg-amber-400 animate-ping'
+            }`} />
+            <span className="text-[11px] font-black tracking-widest uppercase">
+              {isBackendConnected ? 'LIVE BACKEND' : 'DEMO SIMULATOR'}
+            </span>
+          </button>
 
           <button
             onClick={() => setVoiceEnabled(!voiceEnabled)}
